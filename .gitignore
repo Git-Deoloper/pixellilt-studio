@@ -1,0 +1,15 @@
+.DS_Store
+node_modules/
+dist/
+coverage/
+*.log
+.env
+.env.*
+!.env.example
+
+# Local credentials or certificates must never be published.
+*.pem
+*.key
+*.p12
+*.pfx
+.private/

@@ -1,0 +1,24 @@
+name: Quality and security checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Dependency integrity
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Static checks, tests, and production build
+        run: npm run verify
+      - name: Confirm there are no runtime packages
+        run: npm ls --all --omit=dev

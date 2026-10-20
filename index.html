@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0c1011">
+  <meta name="description" content="Make images smaller in your browser. Batch compress, resize, and convert JPG, PNG, WebP, AVIF and more. No accounts, no uploads, no tracking.">
+  <meta name="robots" content="index,follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PixelLilt Studio — Less weight. More wow.">
+  <meta property="og:description" content="A private image conversion studio. Your files never leave your device.">
+  <meta property="og:image" content="assets/social-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <title>PixelLilt Studio — Private image converter and compressor</title>
+  <script type="module" src="src/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#studio">Skip to the image studio</a>
+  <div class="page-glow" aria-hidden="true"></div>
+  <header class="site-header wrap">
+    <a class="brand" href="#top" aria-label="PixelLilt Studio, home"><span class="brand-icon" aria-hidden="true"><span></span><span></span><span></span></span><span>pixel<span class="brand-accent">lilt</span><span class="brand-period">.</span></span></a>
+    <nav aria-label="Main navigation"><a href="#studio">Studio</a><a href="#how-it-works">How it works</a><a href="#faq">FAQ</a></nav>
+    <a class="nav-cta" href="#studio">Open the studio <span aria-hidden="true">↗</span></a>
+  </header>
+  <main id="top">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse-dot"></span> FREE. PRIVATE. RIGHT HERE.</div>
+        <h1 id="hero-title">Less weight.<br><em>More wow.</em></h1>
+        <p class="hero-lede">Turn heavyweight images into beautiful, lightweight files. Compress, resize, and convert — right in your browser, without uploading a thing.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#studio">Make images lighter <span aria-hidden="true">↗</span></a><button class="button button-secondary" id="demo-btn" type="button">Try a sample <span aria-hidden="true">→</span></button></div>
+        <div class="trust-row"><span><span class="trust-tick">✓</span> No sign-up</span><span><span class="trust-tick">✓</span> No uploads</span><span><span class="trust-tick">✓</span> No ads</span></div>
+      </div>
+      <div class="hero-visual" aria-label="Illustrative image optimization preview">
+        <div class="orb orb-a" aria-hidden="true"></div><div class="orb orb-b" aria-hidden="true"></div>
+        <div class="floating-label"><span class="tiny-green-dot"></span> ALL DONE LOCALLY</div>
+        <div class="preview-shell">
+          <div class="preview-bar"><span class="preview-dots"><i></i><i></i><i></i></span><span>preview.jpg</span><span class="window-tools">···</span></div>
+          <div class="mock-image"><div class="sun"></div><div class="mountain mountain-back"></div><div class="mountain mountain-front"></div><div class="image-grain"></div></div>
+          <div class="preview-stats"><div><span class="stat-label">ORIGINAL</span><strong>4.8 <small>MB</small></strong></div><div class="arrow-disc">→</div><div><span class="stat-label">OPTIMIZED</span><strong>812 <small>KB</small></strong></div></div>
+          <div class="savings-chip"><span aria-hidden="true">↘</span> 83% smaller <span class="chip-soft">example</span></div>
+        </div>
+        <div class="floating-format"><span class="format-glyph">↗</span><span><b>Ready for the web</b><small>Smaller files. Same moments.</small></span></div>
+      </div>
+    </section>
+    <section class="proof-bar" aria-label="Product highlights"><div class="wrap proof-inner"><span>THOUGHTFULLY SIMPLE</span><span class="proof-divider"></span><span>ZERO FILE TRANSFERS</span><span class="proof-divider"></span><span>100% BROWSER-BASED</span><span class="proof-divider"></span><span>BUILT FOR YOUR FLOW</span></div></section>
+    <section class="studio-section wrap" id="studio" aria-labelledby="studio-title">
+      <div class="section-head"><div><div class="overline">01 / THE STUDIO</div><h2 id="studio-title">Your images, your rules.</h2><p>Drop a few. Drop a bunch. Fine-tune once and make everything lighter.</p></div><div class="section-signature">↓ START HERE</div></div>
+      <div class="studio-grid">
+        <div class="studio-main">
+          <input type="file" id="file-input" accept="image/jpeg,image/png,image/webp,image/avif,image/gif,image/bmp" multiple hidden aria-label="Choose images">
+          <div class="dropzone" id="dropzone" role="button" tabindex="0" aria-label="Choose images or drop them here">
+            <div class="drop-icon" aria-hidden="true"><span>↑</span></div>
+            <h3>Give your pixels a lift.</h3>
+            <p>Drag images here, or <span class="browse-highlight">browse your files</span></p>
+            <div class="drop-hint">JPG · PNG · WebP · AVIF · GIF · BMP <span>•</span> Up to 20 files / 30 MB each</div>
+          </div>
+          <div class="queue-heading"><h3>Your workspace <span class="count-pill" id="file-count">0</span></h3><button type="button" class="text-button" id="clear-btn" disabled>Clear all</button></div>
+          <div class="queue-empty" id="queue-empty"><div class="empty-sparks" aria-hidden="true">✳</div><p>Fresh canvas. Your images will show up here.</p><small>No image files are stored or uploaded.</small></div>
+          <ul class="file-list" id="file-list" aria-label="Images in your workspace"></ul>
+          <div class="queue-summary" id="queue-summary" hidden><span id="queue-total">0 MB in your workspace</span><span id="processed-total">Ready when you are</span></div>
+        </div>
+        <aside class="settings-panel" aria-label="Output settings"><div class="settings-top"><span class="settings-icon" aria-hidden="true">✳</span><span>OUTPUT SETTINGS</span><span class="settings-step">01—03</span></div>
+          <div class="setting-group"><label for="format">File format</label><p>Choose where your images are headed.</p><div class="select-wrap"><select id="format"><option value="webp">WebP — great for the web</option><option value="jpeg">JPG — works everywhere</option><option value="png">PNG — lossless output</option></select></div></div>
+          <div class="setting-group" id="quality-group"><div class="setting-label-row"><label for="quality">Visual quality</label><output id="quality-value" for="quality">80%</output></div><input id="quality" type="range" min="40" max="100" step="5" value="80" aria-describedby="quality-note"><div class="range-markers"><span>Smaller files</span><span>More detail</span></div><p class="subnote" id="quality-note">A sweet spot between detail and file size.</p></div>
+          <div class="setting-group"><label for="max-edge">Maximum image edge</label><p>Keep the original size or choose a limit.</p><div class="select-wrap"><select id="max-edge"><option value="0">Original dimensions (up to 8K)</option><option value="640">640 px — thumbnails</option><option value="1200">1,200 px — social</option><option value="1920">1,920 px — websites</option><option value="2560">2,560 px — high quality</option><option value="4096">4,096 px — 4K</option></select></div></div>
+          <div class="output-note"><span aria-hidden="true">◎</span><p>Metadata is removed from exported images by re-encoding in your browser.</p></div>
+          <button type="button" class="button button-primary process-btn" id="process-btn" disabled>Optimize images <span id="process-arrow" aria-hidden="true">↗</span></button>
+          <button type="button" class="button button-download" id="download-all-btn" disabled>Download results as ZIP <span aria-hidden="true">↓</span></button>
+          <p class="settings-foot" id="studio-status" role="status" aria-live="polite">Choose images to begin.</p>
+        </aside>
+      </div>
+    </section>
+    <section class="feature-section wrap" id="how-it-works" aria-labelledby="feature-title"><div class="overline">02 / WHAT MAKES IT DIFFERENT</div><div class="feature-intro"><h2 id="feature-title">The little things<br><span>add up.</span></h2><p>Smart tools shouldn't come with a maze of menus, random paywalls, or questions about where your files are going.</p></div><div class="feature-grid"><article class="feature-card"><div class="feature-symbol">⌘</div><h3>Always on your device.</h3><p>Every conversion happens locally. No servers to send photos to. No mystery file retention.</p><span class="feature-number">01 / PRIVACY</span></article><article class="feature-card"><div class="feature-symbol">↙</div><h3>Small can be stunning.</h3><p>Dial in dimensions and quality, then batch-export beautiful, lighter WebP or JPG images.</p><span class="feature-number">02 / PERFORMANCE</span></article><article class="feature-card"><div class="feature-symbol">∞</div><h3>No hoops. Just results.</h3><p>No account, watermark, tracking, subscription, or download limit beyond your device's resources.</p><span class="feature-number">03 / SIMPLICITY</span></article></div></section>
+    <section class="privacy-banner wrap"><div class="privacy-art" aria-hidden="true"><span>⌁</span><span>✧</span></div><div><div class="overline">AN INTERNET WE BELIEVE IN</div><h2>Private by default.<br>Not just by promise.</h2><p>PixelLilt runs entirely in the browser. The source is open for inspection, and we don't collect your images, usage statistics, or personal data.</p></div><a href="#faq" class="button button-secondary">Read our privacy promise <span aria-hidden="true">↗</span></a></section>
+    <section class="faq-section wrap" id="faq" aria-labelledby="faq-title"><div><div class="overline">03 / THE SMALL PRINT</div><h2 id="faq-title">Good questions.<br><span>Clear answers.</span></h2></div><div class="faq-list"><details><summary>Do you upload my images anywhere?<span aria-hidden="true">+</span></summary><p>No. File reading and conversion run locally with browser image and canvas APIs. No analytics, third-party scripts, or upload endpoint are included.</p></details><details><summary>What formats can I use?<span aria-hidden="true">+</span></summary><p>JPG, PNG, WebP, AVIF, GIF, and BMP can be opened if your browser can decode them. Export to WebP, JPG, or PNG. Unsupported browser formats fail safely with a message.</p></details><details><summary>Will animated GIFs stay animated?<span aria-hidden="true">+</span></summary><p>No. Animated images are exported as a still image of their first frame. Color and quality can differ because images are decoded and re-encoded.</p></details><details><summary>Will this increase image quality?<span aria-hidden="true">+</span></summary><p>No. Resizing and lossy formats can reduce image detail. PNG may be larger than the original; we show the actual exported size, including when it grows.</p></details><details><summary>Can I use it offline?<span aria-hidden="true">+</span></summary><p>Yes, after the page is loaded once on HTTPS or localhost, your browser can cache the studio for offline use. You can also host the static files yourself.</p></details></div></section>
+    <section class="last-cta wrap"><div class="star-spark" aria-hidden="true">✳</div><div class="overline">YOUR NEXT IMAGE STARTS HERE</div><h2>Great images.<br><em>Less baggage.</em></h2><a class="button button-primary" href="#studio">Open your studio <span aria-hidden="true">↗</span></a></section>
+  </main>
+  <footer class="site-footer wrap"><a class="brand" href="#top" aria-label="PixelLilt home"><span class="brand-icon" aria-hidden="true"><span></span><span></span><span></span></span><span>pixel<span class="brand-accent">lilt</span><span class="brand-period">.</span></span></a><span>Made for lighter, kinder internet.</span><div><a href="#faq">Privacy & FAQ</a><a href="#studio">Back to studio ↑</a></div><small>© <span id="current-year">2026</span> PixelLilt Studio. MIT licensed.</small></footer>
+  <div class="toast" id="toast" aria-live="polite" role="status" hidden></div>
+</body>
+</html>
