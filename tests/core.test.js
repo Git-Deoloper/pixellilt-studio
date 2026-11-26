@@ -17,6 +17,13 @@ test('safe proportional resizing never enlarges', () => {
   assert.throws(()=>planDimensions(100000,200000,1200), /safety limit/);
   assert.throws(()=>planDimensions(0,0,0), /Invalid/);
 });
+test('resizing never rounds above the output pixel budget',()=>{
+  for(const [width,height] of [[7000,6000],[6000,7000],[8192,6103]]){
+    const result=planDimensions(width,height,0);
+    assert.ok(result.width*result.height<=LIMITS.maxOutputPixels);
+    assert.ok(result.width<=width&&result.height<=height);
+  }
+});
 test('prevents unsafe filenames and collisions', () => {
   assert.equal(normalizedStem('../../x<>?.jpg'),'x');
   const used = new Set();

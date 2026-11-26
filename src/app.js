@@ -45,6 +45,7 @@ function render() {
   elements.process.disabled=count===0 || state.busy || state.importing;
   elements.zip.disabled=ready.length===0 || state.busy;
   elements.picker.disabled=state.busy || state.importing;
+  for (const control of [elements.format, elements.quality, elements.maxEdge, elements.demo]) control.disabled=state.busy || state.importing;
   elements.dropzone.setAttribute('aria-disabled',String(state.busy || state.importing));
   elements.queueTotal.textContent=`${formatBytes(state.items.reduce((sum,item)=>sum+item.file.size,0))} across ${count} ${count===1?'image':'images'}`;
   elements.processedTotal.textContent=ready.length ? `${ready.length} optimized • ${formatBytes(ready.reduce((sum,item)=>sum+item.resultBlob.size,0))}` : 'Ready when you are';
