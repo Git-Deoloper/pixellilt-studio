@@ -24,10 +24,10 @@ export function formatBytes(bytes) {
   return `${number >= 10 ? number.toFixed(1) : number.toFixed(2)} ${sizes[index]}`;
 }
 export function isSupportedFile(file) {
-  return !!file && INPUT_TYPES.includes(file.type.toLowerCase()) && file.size > 0 && file.size <= LIMITS.maxFileBytes;
+  return fileIssue(file) === null;
 }
 export function fileIssue(file) {
-  if (!file || typeof file.size !== 'number') return 'This is not a readable file.';
+  if (!file || !Number.isFinite(file.size) || file.size < 0) return 'This is not a readable file.';
   if (!INPUT_TYPES.includes(String(file.type).toLowerCase())) return 'Unsupported format. Try JPG, PNG, WebP, AVIF, GIF, or BMP.';
   if (!file.size) return 'Empty files cannot be processed.';
   if (file.size > LIMITS.maxFileBytes) return 'Each image must be 30 MB or smaller.';
@@ -45,7 +45,7 @@ export function planDimensions(width, height, maxEdge = 0) {
   if (width * height > LIMITS.maxSourcePixels) throw new RangeError('Source image exceeds the 50 MP safety limit');
   const ceiling = maxEdge || LIMITS.maxEdge;
   const factor = Math.min(1, ceiling / Math.max(width,height), LIMITS.maxEdge / Math.max(width,height), Math.sqrt(LIMITS.maxOutputPixels / (width * height)));
-  return {width: Math.max(1, Math.round(width * factor)), height: Math.max(1, Math.round(height * factor))};
+  return {width: Math.max(1, Math.floor(width * factor)), height: Math.max(1, Math.floor(height * factor))};
 }
 export function validateSettings(settings) {
   const format = String(settings.format || 'webp');
